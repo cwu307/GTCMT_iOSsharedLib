@@ -62,6 +62,39 @@
     }
 }
 
+- (IBAction)sliderAValueChanged:(UISlider *)sender
+{
+    effectA.value = [sender value];
+    backEndInterface->setParameter(effectA.sampleID, effectA.effectID, effectA.parameterID, effectA.value);
+}
+
+- (IBAction)sliderBValueChanged:(UISlider *)sender
+{
+    effectB.value = [sender value];
+    backEndInterface->setParameter(effectB.sampleID, effectB.effectID, effectB.parameterID, effectB.value);
+}
+
+- (IBAction)sliderCValueChanged:(UISlider *)sender
+{
+    effectC.value = [sender value];
+    backEndInterface->setParameter(effectC.sampleID, effectC.effectID, effectC.parameterID, effectC.value);
+}
+
+- (IBAction)segmentedControlAChanged:(UISegmentedControl *)sender
+{
+    effectA.effectID = sender.selectedSegmentIndex;
+}
+
+- (IBAction)segmentedControlBChanged:(UISegmentedControl *)sender
+{
+    effectB.effectID = sender.selectedSegmentIndex;
+}
+
+- (IBAction)segmentedControlCChanged:(UISegmentedControl *)sender
+{
+    effectC.effectID = sender.selectedSegmentIndex;
+}
+
 
 
 - (void)dealloc

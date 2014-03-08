@@ -37,7 +37,8 @@ void SharedLibraryInterface::toggleAudioButtonClicked(bool toggleStatus)
 
 void SharedLibraryInterface::setParameter(int sampleID, int effectID, int parameterID, float value)
 {
-    
+    NSLog(@"You've got sampleID = %d, effectID = %d, parameterID = %d, value = %f",
+          sampleID, effectID, parameterID, value);
 }
 
 

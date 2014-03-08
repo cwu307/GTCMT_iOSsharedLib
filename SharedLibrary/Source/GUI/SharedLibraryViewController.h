@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #include "SharedLibraryInterface.h"
+#include "SharedLibraryHeader.h"
+
+typedef struct {
+    int sampleID;
+    int effectID;
+    int parameterID;
+    float value;
+} AudioEffect;
 
 @interface SharedLibraryViewController : UIViewController
 {
@@ -15,6 +23,9 @@
     
     bool m_bAudioToggleStatus;
     bool m_bTempEffectStatusToggle;
+    AudioEffect effectA;
+    AudioEffect effectB;
+    AudioEffect effectC;
 }
 
 
@@ -24,5 +35,21 @@
 
 
 - (IBAction)addEffectButtonClicked:(UIButton *)sender;
+
+- (IBAction)sliderAValueChanged:(UISlider *)sender;
+
+- (IBAction)sliderBValueChanged:(UISlider *)sender;
+
+- (IBAction)sliderCValueChanged:(UISlider *)sender;
+
+- (IBAction)segmentedControlAChanged:(UISegmentedControl *)sender;
+
+- (IBAction)segmentedControlBChanged:(UISegmentedControl *)sender;
+
+- (IBAction)segmentedControlCChanged:(UISegmentedControl *)sender;
+
+
+
+
 
 @end
