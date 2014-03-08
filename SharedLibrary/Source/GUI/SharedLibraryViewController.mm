@@ -8,6 +8,8 @@
 
 #import "SharedLibraryViewController.h"
 
+#define SAMPLE_RATE 0.01
+
 @interface SharedLibraryViewController ()
 
 @end
@@ -19,6 +21,29 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    
+    // Motion Manager Initialization
+    self.motionManager = [[CMMotionManager alloc] init];
+    
+    if (!self.motionManager.isDeviceMotionAvailable) {
+        NSLog(@"Something wrong here...");
+        NSLog(@"viewDidLoad <-- SharedLibraryViewController");
+        return;
+    }
+
+    self.motionManager.deviceMotionUpdateInterval = SAMPLE_RATE;
+    
+    [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *deviceMotion, NSError *error)
+        {
+            [self motionDeviceUpdate:deviceMotion];
+            if (error)
+            {
+                NSLog(@"%@", error);
+            }
+        }
+     ];
+    
+    // GUI Initialization
     backEndInterface    =   new SharedLibraryInterface;
     m_bAudioToggleStatus = false;
     m_bTempEffectStatusToggle   =   false;
@@ -28,6 +53,34 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+- (void)motionDeviceUpdate:(CMDeviceMotion *)deviceMotion
+{
+    roll = deviceMotion.attitude.roll;
+    pitch = deviceMotion.attitude.pitch;
+    yaw = deviceMotion.attitude.yaw;
+    
+    self.rollLabelValue.text = [NSString stringWithFormat:@"%f", roll];
+//
+//deviceMotion.userAcceleration.x;
+//deviceMotion.userAcceleration.y;
+//deviceMotion.userAcceleration.z;
+//    
+//deviceMotion.attitude.quaternion.w;
+//deviceMotion.attitude.quaternion.x;
+//deviceMotion.attitude.quaternion.y;
+//deviceMotion.attitude.quaternion.z;
+//
+//deviceMotion.rotationRate.x;
+//deviceMotion.rotationRate.y;
+//deviceMotion.rotationRate.z;
+//    
+//deviceMotion.gravity.x;
+//deviceMotion.gravity.y;
+//deviceMotion.gravity.z;
 }
 
 - (IBAction)toggleAudioButtonClicked:(UIButton *)sender
@@ -105,6 +158,7 @@
     delete backEndInterface;
     
     
+    [_rollLabelValue release];
     [super dealloc];
 }
 @end

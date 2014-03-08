@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
 #include "SharedLibraryInterface.h"
 #include "SharedLibraryHeader.h"
 
@@ -17,10 +18,17 @@ typedef struct {
     float value;
 } AudioEffect;
 
+
 @interface SharedLibraryViewController : UIViewController
 {
     SharedLibraryInterface*     backEndInterface;
     
+    // Motion Data Parameters
+    float roll;
+    float pitch;
+    float yaw;
+    
+    // GUI Parameters
     bool m_bAudioToggleStatus;
     bool m_bTempEffectStatusToggle;
     AudioEffect effectA;
@@ -28,11 +36,16 @@ typedef struct {
     AudioEffect effectC;
 }
 
+// Motion Data Management
+@property (nonatomic, strong) CMMotionManager* motionManager;
+
+- (void) motionDeviceUpdate:(CMDeviceMotion *)deviceMotion;
 
 
+
+// GUI Interface
 @property (retain, nonatomic) IBOutlet UIButton *toggleAudioButton;
 - (IBAction)toggleAudioButtonClicked:(UIButton *)sender;
-
 
 - (IBAction)addEffectButtonClicked:(UIButton *)sender;
 
@@ -50,6 +63,7 @@ typedef struct {
 
 
 
+@property (retain, nonatomic) IBOutlet UILabel *rollLabelValue;
 
 
 @end
