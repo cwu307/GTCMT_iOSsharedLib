@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#include "AudioEngine.h"
+#include "SharedLibraryInterface.h"
 
 @interface SharedLibraryViewController : UIViewController
 {
-    AudioEngine*    audioEngine;
-    
+    SharedLibraryInterface*     backEndInterface;
     
     bool m_bAudioToggleStatus;
     

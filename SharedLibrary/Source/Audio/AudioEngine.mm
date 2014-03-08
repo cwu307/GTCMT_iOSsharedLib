@@ -17,7 +17,6 @@ AudioEngine::AudioEngine()
     sharedAudioDeviceManager->initialise(2, 2, 0, true, String::empty, 0);
     
     liveAudioStream     =   new AudioStream();
-    
 }
 
 
@@ -26,20 +25,17 @@ AudioEngine::~AudioEngine()
 {
     liveAudioStream             =   nullptr;
     sharedAudioDeviceManager    =   nullptr;
-    
 }
 
 
-void AudioEngine::toggleAudioButtonClicked(bool toggleState)
+
+void AudioEngine::startAudioStreaming()
 {
-    if(toggleState)
-    {
-        sharedAudioDeviceManager->addAudioCallback(liveAudioStream);
-    }
-    
-    else
-    {
-        sharedAudioDeviceManager->removeAudioCallback(liveAudioStream);
-    }
-    
+    sharedAudioDeviceManager->addAudioCallback(liveAudioStream);
+}
+
+
+void AudioEngine::stopAudioStreaming()
+{
+    sharedAudioDeviceManager->removeAudioCallback(liveAudioStream);
 }

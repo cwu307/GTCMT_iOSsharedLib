@@ -36,6 +36,7 @@
 		FCE6E51218CB03AF00D6D1A3 /* juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E44C18CB036300D6D1A3 /* juce_gui_basics.mm */; };
 		FCE6E51618CB058300D6D1A3 /* AudioEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */; };
 		FCE6E51918CB05F900D6D1A3 /* AudioStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */; };
+		FCE6E51C18CB116E00D6D1A3 /* SharedLibraryInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51A18CB116E00D6D1A3 /* SharedLibraryInterface.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1033,6 +1034,8 @@
 		FCE6E51518CB058300D6D1A3 /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
 		FCE6E51718CB05F900D6D1A3 /* AudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStream.h; sourceTree = "<group>"; };
 		FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioStream.mm; sourceTree = "<group>"; };
+		FCE6E51A18CB116E00D6D1A3 /* SharedLibraryInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SharedLibraryInterface.mm; path = Source/Interface/SharedLibraryInterface.mm; sourceTree = SOURCE_ROOT; };
+		FCE6E51B18CB116E00D6D1A3 /* SharedLibraryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedLibraryInterface.h; path = Source/Interface/SharedLibraryInterface.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1147,6 +1150,8 @@
 		FCE6E0D418CB019F00D6D1A3 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				FCE6E51A18CB116E00D6D1A3 /* SharedLibraryInterface.mm */,
+				FCE6E51B18CB116E00D6D1A3 /* SharedLibraryInterface.h */,
 				FCE6E51318CB044C00D6D1A3 /* SharedLibraryHeader.h */,
 			);
 			path = Interface;
@@ -2982,6 +2987,7 @@
 				FCE6E51118CB03AF00D6D1A3 /* juce_graphics.mm in Sources */,
 				FCE6E51918CB05F900D6D1A3 /* AudioStream.mm in Sources */,
 				FCE6E51218CB03AF00D6D1A3 /* juce_gui_basics.mm in Sources */,
+				FCE6E51C18CB116E00D6D1A3 /* SharedLibraryInterface.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

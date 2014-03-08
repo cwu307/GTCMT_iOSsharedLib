@@ -19,8 +19,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    
-    audioEngine     =   new AudioEngine();
+    backEndInterface    =   new SharedLibraryInterface;
     m_bAudioToggleStatus = false;
 }
 
@@ -34,12 +33,12 @@
 {
     if (!m_bAudioToggleStatus)
     {
-        audioEngine->toggleAudioButtonClicked(true);
+        backEndInterface->toggleAudioButtonClicked(true);
         m_bAudioToggleStatus    =   true;
     }
     else
     {
-        audioEngine->toggleAudioButtonClicked(false);
+        backEndInterface->toggleAudioButtonClicked(false);
         m_bAudioToggleStatus    =   false;
     }
     
@@ -52,7 +51,7 @@
     
     [_toggleAudioButton release];
     
-    delete audioEngine;
+    delete backEndInterface;
     
     
     [super dealloc];

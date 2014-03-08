@@ -20,7 +20,8 @@ public:
     AudioEngine();
     ~AudioEngine();
     
-    void toggleAudioButtonClicked(bool toggleState);
+    void startAudioStreaming();
+    void stopAudioStreaming();
     
     
 private:
