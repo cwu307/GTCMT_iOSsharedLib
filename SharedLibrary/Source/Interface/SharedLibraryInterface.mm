@@ -51,3 +51,9 @@ void SharedLibraryInterface::removeAudioEffect(int sampleID, int effectPosition)
 {
     audioEngine->removeAudioEffect(sampleID, effectPosition);
 }
+
+
+void SharedLibraryInterface::setAudioEffectBypassState(int sampleID, int effectPosition, bool bypassState)
+{
+    
+}

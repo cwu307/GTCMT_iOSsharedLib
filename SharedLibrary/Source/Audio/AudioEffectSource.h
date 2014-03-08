@@ -11,6 +11,7 @@
 
 #include "SharedLibraryHeader.h"
 #include "TestDelay.h"
+// Add Effect Header Here
 
 
 class AudioEffectSource
@@ -22,12 +23,13 @@ public:
     
     void setParameter(int parameterID, float value);
     
-    void run(const float** inputBuffer, float** outputBuffer, int blockSize);
+    void process(float** audioBuffer, int blockSize, bool bypassState);
     
     
 private:
     
     ScopedPointer<TestDelay>   delayEffect;
+    //Declare Effect Object Here
     
     int m_iEffectID;
 };

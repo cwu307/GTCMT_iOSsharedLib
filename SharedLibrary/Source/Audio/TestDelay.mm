@@ -129,7 +129,7 @@ float TestDelay::getMaxDelayTime_ms()
 
 
 
-void TestDelay::process(const float** inputBuffer, float** outputBuffer, int blockSize)
+void TestDelay::process(float** audioBuffer, int blockSize, bool bypassState)
 {
     //-- Iterate Through Channels --/
     for (int channel=0; channel < m_iNumChannels; channel++)
@@ -140,15 +140,15 @@ void TestDelay::process(const float** inputBuffer, float** outputBuffer, int blo
             //-- FIR Filter --//
             if (m_FilterType == k_FIR)
             {
-                outputBuffer[channel][sample] = inputBuffer[channel][sample] + (m_fDelay_line_gain * m_CRingBuffer[channel]->getPostInc());
-                m_CRingBuffer[channel]->putPostInc(inputBuffer[channel][sample]);
+                audioBuffer[channel][sample] = audioBuffer[channel][sample] + (m_fDelay_line_gain * m_CRingBuffer[channel]->getPostInc());
+                m_CRingBuffer[channel]->putPostInc(audioBuffer[channel][sample]);
             }
             
             //-- IIR Filter --//
             else
             {
-                outputBuffer[channel][sample] = (m_fInput_gain * inputBuffer[channel][sample]) + (m_fDelay_line_gain * m_CRingBuffer[channel]->getPostInc());
-                m_CRingBuffer[channel]->putPostInc(outputBuffer[channel][sample]);
+                audioBuffer[channel][sample] = (m_fInput_gain * audioBuffer[channel][sample]) + (m_fDelay_line_gain * m_CRingBuffer[channel]->getPostInc());
+                m_CRingBuffer[channel]->putPostInc(audioBuffer[channel][sample]);
             }
         }
     }

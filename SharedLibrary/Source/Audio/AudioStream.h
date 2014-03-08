@@ -33,6 +33,7 @@ public:
     
     void addAudioEffect(int sampleID, int effectPosition, int effectID);
     void removeAudioEffect(int sampleID, int effectPosition);
+    void setAudioEffectBypassState(int sampleID, int effectPosition, bool bypassState);
     
     void setParameter(int sampleID, int effectID, int parameterID, float value);
     
@@ -41,6 +42,8 @@ private:
     AudioDeviceManager::AudioDeviceSetup        deviceSetup;
     
     OwnedArray<AudioEffectSource>   audioEffectSource;
+    Array<bool>                     m_pbBypassStateArray;
+    
 
 };
 

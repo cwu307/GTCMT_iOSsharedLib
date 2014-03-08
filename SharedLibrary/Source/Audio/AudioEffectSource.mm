@@ -21,6 +21,7 @@ AudioEffectSource::AudioEffectSource(int effectID, int numChannels, float sample
             break;
         }
             
+        
         default:
             break;
     }
@@ -32,7 +33,7 @@ AudioEffectSource::AudioEffectSource(int effectID, int numChannels, float sample
 AudioEffectSource::~AudioEffectSource()
 {
     delayEffect =   nullptr;
-    
+    // Null the effects
 }
 
 
@@ -43,14 +44,14 @@ void AudioEffectSource::setParameter(int parameterID, float value)
 
 
 
-void AudioEffectSource::run(const float **inputBuffer, float **outputBuffer, int blockSize)
+void AudioEffectSource::process(float **audioBuffer, int blockSize, bool bypassState)
 {
     switch (m_iEffectID)
     {
         // Delay
         case 0:
         {
-            delayEffect->process(inputBuffer, outputBuffer, blockSize);
+            delayEffect->process(audioBuffer, blockSize, bypassState);
             break;
         }
             

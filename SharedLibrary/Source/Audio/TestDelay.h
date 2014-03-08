@@ -64,7 +64,7 @@ public:
     
     
     //--- Main Filter Process Method ---//
-    void process(const float** inputBuffer, float** outputBuffer, int blockSize);
+    void process(float** audioBuffer, int blockSize, bool bypassState);
     
     
     

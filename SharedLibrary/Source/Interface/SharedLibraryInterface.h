@@ -25,6 +25,8 @@ public:
     
     void setParameter(int sampleID, int effectID, int parameterID, float value);
     
+    void setAudioEffectBypassState(int sampleID, int effectPosition, bool bypassState);
+    
 private:
     
     AudioEngine*    audioEngine;

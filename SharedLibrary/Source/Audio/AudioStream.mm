@@ -13,6 +13,9 @@ AudioStream::AudioStream()
 {
     //--- Audio Device Settings ---//
     sharedAudioDeviceManager->getAudioDeviceSetup(deviceSetup);
+    
+    audioEffectSource.clear();
+    m_pbBypassStateArray.clear();
 }
 
 
@@ -20,6 +23,7 @@ AudioStream::AudioStream()
 AudioStream::~AudioStream()
 {
     sharedAudioDeviceManager->removeAudioCallback(this);
+    audioEffectSource.clear();
 }
 
 
@@ -53,49 +57,59 @@ void AudioStream::audioDeviceIOCallback( const float** inputChannelData,
 {
     
     
+    // Copy Input Buffer to Output
+    for (int channel = 0; channel < totalNumInputChannels; channel++)
+    {
+        memcpy(outputChannelData[channel], inputChannelData[channel], blockSize);
+    }
+    
+    
+    // Iterate through effects and process
     if (audioEffectSource.size() > 0)
     {
         for (int effectNo = 0; effectNo < audioEffectSource.size(); effectNo++)
         {
-            audioEffectSource.getUnchecked(effectNo)->run(inputChannelData, outputChannelData, blockSize);
+            audioEffectSource.getUnchecked(effectNo)->process(outputChannelData, blockSize, m_pbBypassStateArray[effectNo]);
         }
         
     }
     
-    
-    
-    else
-    {
-        for (int sample = 0; sample < blockSize; sample++)
-        {
-            for (int channel = 0; channel < totalNumOutputChannels; channel++)
-            {
-                outputChannelData[channel][sample] = inputChannelData[channel][sample];
-            }
-        }
-    }
-    
-        
-    
 }
 
 
-
-void AudioStream::addAudioEffect(int sampleID, int effectPosition, int effectID)
-{
-    audioEffectSource.add(new AudioEffectSource(effectID, 2, float(deviceSetup.sampleRate)));
-}
-
-
-void AudioStream::removeAudioEffect(int sampleID, int effectPosition)
-{
-    audioEffectSource.remove(effectPosition, true);
-}
-
-
+//==============================================================================
+// Set Audio Effect Parameter
+// !!! Called on Audio Thread
+//==============================================================================
 
 void AudioStream::setParameter(int sampleID, int effectID, int parameterID, float value)
 {
     
 }
 
+
+
+
+
+//==============================================================================
+// Add and Remove Audio Effect
+// Will pause playback for an instant and restart
+//==============================================================================
+
+void AudioStream::addAudioEffect(int sampleID, int effectPosition, int effectID)
+{
+    audioEffectSource.add(new AudioEffectSource(effectID, 2, float(deviceSetup.sampleRate)));
+    m_pbBypassStateArray.add(true);
+}
+
+
+void AudioStream::removeAudioEffect(int sampleID, int effectPosition)
+{
+    audioEffectSource.remove(effectPosition, true);
+    m_pbBypassStateArray.remove(effectPosition);
+}
+
+void AudioStream::setAudioEffectBypassState(int sampleID, int effectPosition, bool bypassState)
+{
+    m_pbBypassStateArray.set(effectPosition, bypassState);
+}
