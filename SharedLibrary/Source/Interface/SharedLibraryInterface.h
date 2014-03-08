@@ -20,7 +20,10 @@ public:
     
     void toggleAudioButtonClicked(bool toggleStatus);
     
-    void setParameter(int effectID, int parameterID, float value);
+    void addAudioEffect(int sampleID, int effectPosition, int effectID);
+    void removeAudioEffect(int sampleID, int effectPosition);
+    
+    void setParameter(int sampleID, int effectID, int parameterID, float value);
     
 private:
     

@@ -51,13 +51,51 @@ void AudioStream::audioDeviceIOCallback( const float** inputChannelData,
                                         int totalNumOutputChannels,
                                         int blockSize)
 {
-        
-    for (int sample = 0; sample < blockSize; sample++)
+    
+    
+    if (audioEffectSource.size() > 0)
     {
-        for (int channel = 0; channel < totalNumOutputChannels; channel++)
+        for (int effectNo = 0; effectNo < audioEffectSource.size(); effectNo++)
         {
-            outputChannelData[channel][sample] = inputChannelData[channel][sample];
+            audioEffectSource.getUnchecked(effectNo)->run(inputChannelData, outputChannelData, blockSize);
+        }
+        
+    }
+    
+    
+    
+    else
+    {
+        for (int sample = 0; sample < blockSize; sample++)
+        {
+            for (int channel = 0; channel < totalNumOutputChannels; channel++)
+            {
+                outputChannelData[channel][sample] = inputChannelData[channel][sample];
+            }
         }
     }
     
+        
+    
 }
+
+
+
+void AudioStream::addAudioEffect(int sampleID, int effectPosition, int effectID)
+{
+    audioEffectSource.add(new AudioEffectSource(effectID, 2, float(deviceSetup.sampleRate)));
+}
+
+
+void AudioStream::removeAudioEffect(int sampleID, int effectPosition)
+{
+    audioEffectSource.remove(effectPosition, true);
+}
+
+
+
+void AudioStream::setParameter(int sampleID, int effectID, int parameterID, float value)
+{
+    
+}
+

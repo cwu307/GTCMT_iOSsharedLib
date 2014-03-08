@@ -39,3 +39,20 @@ void AudioEngine::stopAudioStreaming()
 {
     sharedAudioDeviceManager->removeAudioCallback(liveAudioStream);
 }
+
+
+
+void AudioEngine::addAudioEffect(int sampleID, int effectPosition, int effectID)
+{
+    sharedAudioDeviceManager->removeAudioCallback(liveAudioStream);
+    liveAudioStream->addAudioEffect(sampleID, effectPosition, effectID);
+    sharedAudioDeviceManager->addAudioCallback(liveAudioStream);
+}
+
+
+void AudioEngine::removeAudioEffect(int sampleID, int effectPosition)
+{
+    sharedAudioDeviceManager->removeAudioCallback(liveAudioStream);
+    liveAudioStream->removeAudioEffect(sampleID, effectPosition);
+    sharedAudioDeviceManager->addAudioCallback(liveAudioStream);
+}

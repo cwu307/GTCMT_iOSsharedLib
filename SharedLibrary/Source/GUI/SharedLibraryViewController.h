@@ -14,12 +14,15 @@
     SharedLibraryInterface*     backEndInterface;
     
     bool m_bAudioToggleStatus;
-    
+    bool m_bTempEffectStatusToggle;
 }
 
 
 
 @property (retain, nonatomic) IBOutlet UIButton *toggleAudioButton;
 - (IBAction)toggleAudioButtonClicked:(UIButton *)sender;
+
+
+- (IBAction)addEffectButtonClicked:(UIButton *)sender;
 
 @end

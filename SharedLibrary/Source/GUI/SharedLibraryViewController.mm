@@ -21,6 +21,7 @@
     
     backEndInterface    =   new SharedLibraryInterface;
     m_bAudioToggleStatus = false;
+    m_bTempEffectStatusToggle   =   false;
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +43,23 @@
         m_bAudioToggleStatus    =   false;
     }
     
+}
+
+- (IBAction)addEffectButtonClicked:(UIButton *)sender
+{
+    if (!m_bTempEffectStatusToggle)
+    {
+        // Add Audio Effect :   Sample ID, Audio Effect Position, Audio Effect ID
+        backEndInterface->addAudioEffect(0, 0, 0);
+        m_bTempEffectStatusToggle   =   true;
+    }
+    
+    else
+    {
+        // Remove Audio Effect :   Sample ID, Audio Effect Position
+        backEndInterface->removeAudioEffect(0, 0);
+        m_bTempEffectStatusToggle   =   false;
+    }
 }
 
 

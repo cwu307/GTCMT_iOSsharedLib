@@ -23,10 +23,14 @@ public:
     void startAudioStreaming();
     void stopAudioStreaming();
     
+    void addAudioEffect(int sampleID, int effectPosition, int effectID);
+    void removeAudioEffect(int sampleID, int effectPosition);
     
 private:
     
     ScopedPointer<AudioStream>  liveAudioStream;
+    
+    
     
 };
 

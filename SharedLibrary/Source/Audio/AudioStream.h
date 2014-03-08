@@ -10,6 +10,7 @@
 #define __SharedLibrary__AudioStream__
 
 #include "SharedLibraryHeader.h"
+#include "AudioEffectSource.h"
 
 class AudioStream   :   public AudioIODeviceCallback
 {
@@ -30,12 +31,17 @@ public:
 	void audioDeviceAboutToStart (AudioIODevice* device) override;
     void audioDeviceStopped() override;
     
+    void addAudioEffect(int sampleID, int effectPosition, int effectID);
+    void removeAudioEffect(int sampleID, int effectPosition);
     
+    void setParameter(int sampleID, int effectID, int parameterID, float value);
     
 private:
     
     AudioDeviceManager::AudioDeviceSetup        deviceSetup;
     
+    OwnedArray<AudioEffectSource>   audioEffectSource;
+
 };
 
 #endif /* defined(__SharedLibrary__AudioStream__) */

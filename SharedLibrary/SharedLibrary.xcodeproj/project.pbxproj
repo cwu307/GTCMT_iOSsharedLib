@@ -37,6 +37,8 @@
 		FCE6E51618CB058300D6D1A3 /* AudioEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */; };
 		FCE6E51918CB05F900D6D1A3 /* AudioStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */; };
 		FCE6E51C18CB116E00D6D1A3 /* SharedLibraryInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51A18CB116E00D6D1A3 /* SharedLibraryInterface.mm */; };
+		FCE6E51F18CB1E9100D6D1A3 /* AudioEffectSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51D18CB1E9100D6D1A3 /* AudioEffectSource.mm */; };
+		FCE6E52218CB215F00D6D1A3 /* TestDelay.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E52018CB215F00D6D1A3 /* TestDelay.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1036,6 +1038,12 @@
 		FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioStream.mm; sourceTree = "<group>"; };
 		FCE6E51A18CB116E00D6D1A3 /* SharedLibraryInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SharedLibraryInterface.mm; path = Source/Interface/SharedLibraryInterface.mm; sourceTree = SOURCE_ROOT; };
 		FCE6E51B18CB116E00D6D1A3 /* SharedLibraryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedLibraryInterface.h; path = Source/Interface/SharedLibraryInterface.h; sourceTree = SOURCE_ROOT; };
+		FCE6E51D18CB1E9100D6D1A3 /* AudioEffectSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioEffectSource.mm; sourceTree = "<group>"; };
+		FCE6E51E18CB1E9100D6D1A3 /* AudioEffectSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEffectSource.h; sourceTree = "<group>"; };
+		FCE6E52018CB215F00D6D1A3 /* TestDelay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestDelay.mm; sourceTree = "<group>"; };
+		FCE6E52118CB215F00D6D1A3 /* TestDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDelay.h; sourceTree = "<group>"; };
+		FCE6E52318CB21A600D6D1A3 /* RingBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
+		FCE6E52418CB280D00D6D1A3 /* CUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUtil.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1129,10 +1137,16 @@
 		FCE6E0CE18CB019F00D6D1A3 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				FCE6E52418CB280D00D6D1A3 /* CUtil.h */,
+				FCE6E52318CB21A600D6D1A3 /* RingBuffer.h */,
 				FCE6E51718CB05F900D6D1A3 /* AudioStream.h */,
 				FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */,
-				FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */,
 				FCE6E51518CB058300D6D1A3 /* AudioEngine.h */,
+				FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */,
+				FCE6E51E18CB1E9100D6D1A3 /* AudioEffectSource.h */,
+				FCE6E51D18CB1E9100D6D1A3 /* AudioEffectSource.mm */,
+				FCE6E52118CB215F00D6D1A3 /* TestDelay.h */,
+				FCE6E52018CB215F00D6D1A3 /* TestDelay.mm */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -2978,7 +2992,9 @@
 				FCE6E0D618CB019F00D6D1A3 /* SharedLibraryAppDelegate.mm in Sources */,
 				FCE6E50A18CB03AF00D6D1A3 /* juce_audio_basics.mm in Sources */,
 				FCE6E50B18CB03AF00D6D1A3 /* juce_audio_devices.mm in Sources */,
+				FCE6E52218CB215F00D6D1A3 /* TestDelay.mm in Sources */,
 				FCE6E50C18CB03AF00D6D1A3 /* juce_audio_formats.mm in Sources */,
+				FCE6E51F18CB1E9100D6D1A3 /* AudioEffectSource.mm in Sources */,
 				FCE6E50D18CB03AF00D6D1A3 /* juce_core.mm in Sources */,
 				FCE6E50E18CB03AF00D6D1A3 /* juce_cryptography.mm in Sources */,
 				FCE6E50F18CB03AF00D6D1A3 /* juce_data_structures.mm in Sources */,
@@ -3191,6 +3207,7 @@
 				FCE6E0C518CB00EF00D6D1A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FCE6E0C618CB00EF00D6D1A3 /* Build configuration list for PBXNativeTarget "SharedLibraryTests" */ = {
 			isa = XCConfigurationList;
@@ -3199,6 +3216,7 @@
 				FCE6E0C818CB00EF00D6D1A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

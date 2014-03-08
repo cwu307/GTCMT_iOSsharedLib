@@ -13,4 +13,12 @@
 
 extern ScopedPointer<AudioDeviceManager>            sharedAudioDeviceManager;
 
+
+enum    EffectID
+{
+    Tremolo,
+    Delay,
+    Reverb
+};
+
 #endif

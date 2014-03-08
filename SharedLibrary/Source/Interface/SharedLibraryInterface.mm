@@ -35,7 +35,19 @@ void SharedLibraryInterface::toggleAudioButtonClicked(bool toggleStatus)
 }
 
 
-void SharedLibraryInterface::setParameter(int effectID, int parameterID, float value)
+void SharedLibraryInterface::setParameter(int sampleID, int effectID, int parameterID, float value)
 {
     
+}
+
+
+void SharedLibraryInterface::addAudioEffect(int sampleID, int effectPosition, int effectID)
+{
+    audioEngine->addAudioEffect(sampleID, effectPosition, effectID);
+}
+
+
+void SharedLibraryInterface::removeAudioEffect(int sampleID, int effectPosition)
+{
+    audioEngine->removeAudioEffect(sampleID, effectPosition);
 }
