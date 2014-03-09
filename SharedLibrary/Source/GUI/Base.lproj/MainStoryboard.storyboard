@@ -46,6 +46,18 @@
                                     <action selector="addEffectButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vQR-vg-ENI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPF-gk-DpL">
+                                <rect key="frame" x="20" y="297" width="280" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.14234303179999999" green="0.50796321820000001" blue="0.53142891219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Play/Record">
+                                    <color key="titleColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="playRecordButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="d3b-oL-npJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>

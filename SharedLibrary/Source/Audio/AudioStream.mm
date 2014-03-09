@@ -58,9 +58,12 @@ void AudioStream::audioDeviceIOCallback( const float** inputChannelData,
     
     
     // Copy Input Buffer to Output
-    for (int channel = 0; channel < totalNumInputChannels; channel++)
+    for (int sample = 0; sample < blockSize; sample++)
     {
-        memcpy(outputChannelData[channel], inputChannelData[channel], blockSize);
+        for (int channel = 0; channel < totalNumInputChannels; channel++)
+        {
+            outputChannelData[channel][sample] = inputChannelData[channel][sample];
+        }
     }
     
     

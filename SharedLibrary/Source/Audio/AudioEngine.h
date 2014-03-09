@@ -11,6 +11,8 @@
 
 #include "SharedLibraryHeader.h"
 #include "AudioStream.h"
+#include "AudioFileRecord.h"
+#include "AudioFilePlayback.h"
 
 class AudioEngine
 
@@ -28,9 +30,16 @@ public:
     void removeAudioEffect(int sampleID, int effectPosition);
     void setAudioEffectBypassState(int sampleID, int effectPosition, bool bypassState);
     
+    void playRecordStop(int value);
+    
 private:
     
     ScopedPointer<AudioStream>  liveAudioStream;
+    
+    ScopedPointer<AudioFileRecord>  audioFileRecorder;
+    ScopedPointer<AudioFilePlayback> audioFilePlayer;
+    
+    String currentFilePath;
     
     bool m_bAudioThreadRunning;
     

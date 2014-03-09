@@ -18,6 +18,11 @@ AudioEngine::AudioEngine()
     
     liveAudioStream     =   new AudioStream();
     m_bAudioThreadRunning   =   false;
+    
+    audioFileRecorder   =   new AudioFileRecord();
+    audioFilePlayer     =   new AudioFilePlayback();
+    
+    currentFilePath = File::getSpecialLocation(File::userDocumentsDirectory).getFullPathName() + "/Recording.wav";
 }
 
 
@@ -25,6 +30,10 @@ AudioEngine::AudioEngine()
 AudioEngine::~AudioEngine()
 {
     liveAudioStream             =   nullptr;
+    
+    audioFileRecorder           =   nullptr;
+    audioFilePlayer             =   nullptr;
+    
     sharedAudioDeviceManager    =   nullptr;
 }
 
@@ -86,4 +95,29 @@ void AudioEngine::setAudioEffectBypassState(int sampleID, int effectPosition, bo
 bool AudioEngine::isAudioRunning()
 {
     return m_bAudioThreadRunning;
+}
+
+
+void AudioEngine::playRecordStop(int value)
+{
+    if (value == 0)
+    {
+        audioFileRecorder->stopRecording();
+        audioFilePlayer->stopPlaying();
+    }
+    
+    
+    else if (value == 1)
+    {
+        audioFilePlayer->stopPlaying();
+        audioFileRecorder->startRecording(currentFilePath);
+    }
+    
+    
+    else if (value == 2)
+    {
+        audioFileRecorder->stopRecording();
+        audioFilePlayer->loadFileIntoTransport(currentFilePath);
+        audioFilePlayer->startPlaying();
+    }
 }

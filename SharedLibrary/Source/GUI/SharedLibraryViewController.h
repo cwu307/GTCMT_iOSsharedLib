@@ -15,6 +15,8 @@
     
     bool m_bAudioToggleStatus;
     bool m_bTempEffectStatusToggle;
+    
+    int m_iPlayRecordStatus;
 }
 
 
@@ -24,5 +26,8 @@
 
 
 - (IBAction)addEffectButtonClicked:(UIButton *)sender;
+
+
+- (IBAction)playRecordButtonClicked:(UIButton *)sender;
 
 @end
