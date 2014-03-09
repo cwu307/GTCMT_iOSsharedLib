@@ -15,7 +15,16 @@ CDelay::CDelay(int numChannels)
 	};
 
 	delayTime = 0;
+
+	initDefaults();
 };
+
+void CDelay::initDefaults()
+{
+	setFeedback(0.5);
+	setDelayTime(0.5);
+	setWetDry(0.5);
+}
 
 void CDelay::setSampleRate(int smplRate)
 {

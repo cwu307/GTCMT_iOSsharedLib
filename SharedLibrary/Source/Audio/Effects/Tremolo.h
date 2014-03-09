@@ -21,6 +21,8 @@ public:
 	void setParam(/*hFile::enumType type*/ int type, float value);
 	void prepareToPlay(int sampleRate);
 
+	void initDefaults();
+
 	void setSampleRate(int sampleRate);
 	void setChanNum(int numChan);
 	void setType(CLFO::LFO_Type type);

@@ -24,6 +24,8 @@ public:
 	void prepareToPlay(int sampleRate, int bufferSize);
 	void finishPlaying();
 
+	void initDefaults();
+
 	void setSampleRate(int sampleRate);
 	void setChanNum(int numChan);
 	void setDelayFeedback(float feedback);

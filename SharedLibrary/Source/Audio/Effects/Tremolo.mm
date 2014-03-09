@@ -7,6 +7,14 @@ CTremolo::CTremolo(int numChannels)
 	LFO = new CLFO();
 
 	rate = 0;
+
+	initDefaults();
+}
+
+void CTremolo::initDefaults()
+{
+	setDepth(1.0);
+	setRate(3.0);
 }
 
 void CTremolo::setType(CLFO::LFO_Type type)
@@ -38,6 +46,7 @@ void CTremolo::setParam(/*hFile::enumType type*/ int type, float value)
 			//rate_target		= value;
 			rate = value;
 		break;
+		default: break;
 	};
 }
 
@@ -89,6 +98,7 @@ float CTremolo::getParam(/*hFile::enumType type*/ int type)
 		case 1:
 			return rate;
 		break;
+		default: break;
 	};
 }
 
