@@ -4,10 +4,12 @@ CTremolo::CTremolo(int numChannels)
 {
 	setChanNum(numChannels);
 	depth = 0;
-	LFO = new CLFO();
-
 	rate = 0;
+}
 
+void CTremolo::prepareToPlay(float sampleRate)
+{
+	LFO = new CLFO(sampleRate);
 	initDefaults();
 }
 
@@ -46,7 +48,9 @@ void CTremolo::setParam(/*hFile::enumType type*/ int type, float value)
 			//rate_target		= value;
 			rate = value;
 		break;
-		default: break;
+		default: 
+			// return 0;
+			break;
 	};
 }
 
@@ -77,7 +81,7 @@ void CTremolo::process(float **inputBuffer, int numFrames, bool bypass)
 	{
 		for (int c = 0; c < numChannels; c++)
 		{	
-			inputBuffer[c][i] = (1 + getParam(0)*LFO->getLFOSampleData(i))*(inputBuffer[c][i]);
+			inputBuffer[c][i] = (1 + getDepth()*LFO->getLFOSampleData(i))*(inputBuffer[c][i]);
 		};
 	};
 
@@ -114,4 +118,9 @@ float CTremolo::getRate()
 
 void CTremolo::reset()
 {
+}
+
+CTremolo::~CTremolo()
+{
+	delete [] LFO;
 }

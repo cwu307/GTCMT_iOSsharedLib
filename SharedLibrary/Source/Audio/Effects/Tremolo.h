@@ -19,7 +19,7 @@ public:
 
 	// set:
 	void setParam(/*hFile::enumType type*/ int type, float value);
-	void prepareToPlay(int sampleRate);
+	void prepareToPlay(float sampleRate);
 
 	void initDefaults();
 
@@ -42,13 +42,13 @@ public:
 	void process(float **inputBuffer, int numFrames, bool bypass);
 
 	void reset();
-	virtual ~CTremolo () {};
+	virtual ~CTremolo ();
 
 private:
 
 	CLFO *LFO;
 
-	int sampleRate;
+	float sampleRate;
 	int numChannels;
 
 	float depth;
