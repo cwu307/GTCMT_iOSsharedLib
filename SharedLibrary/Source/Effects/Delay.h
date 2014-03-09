@@ -20,6 +20,8 @@ public:
 	static void create(CDelay*& pCDelay);
 	void init(float sampleRate, int numChannels, float maxDelayInS, float delayInS, float mix, float fdBack);
 	// set:
+	void setParam(/*hFile::enumType type*/ int type, float value);
+
 	void setSampleRate(int sampleRate);
 	void setChanNum(int numChan);
 	void setDelayFeedback(float feedback);
@@ -27,14 +29,17 @@ public:
 	void setWetDry(float mix);
 	void setMaxDelay(float delay);
 	void setFeedback(float fdBack);
+	
 	// get:
+	float CDelay::getParam(/*hFile::enumType type*/ int type);
+
 	float getMaxDelay();
 	float getWetDry();
 	float getDelay();
 	float getFeedback();
 	int   getSampleRate();
 	// process:
-	float ** process(float **inputBuffer, float **outputBuffer, int numFrames);
+	void process(float **inputBuffer, int numFrames, bool bypass);
 
 	void reset();
 	virtual ~CDelay () {};
@@ -50,6 +55,10 @@ private:
 	float wetDry;
 	float delayTime;
 	float maxDelayTimeInS;
+
+	float feedBack_target;
+	float wetDry_target;
+	float delayTime_target;
 };
 
 #endif

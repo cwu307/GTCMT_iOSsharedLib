@@ -15,11 +15,12 @@ void CTremolo::init(float sampleRate, int numChannels, float depth, float rate)
 {
 	setSampleRate(sampleRate);
 	setChanNum(numChannels);
-	setDepth(depth);
-
+//	setDepth(depth);
+	setParam(1,depth);
 	LFO = new CMyLFO(sampleRate);
 
-	setRate(rate);
+	setParam(2, rate);
+//	setRate(rate);
 }
 
 void CTremolo::setType(CMyLFO::LFO_Type type)
@@ -39,6 +40,19 @@ void CTremolo::setChanNum(int numChan)
 		numChannels = numChan;
 }
 
+void CTremolo::setParam(/*hFile::enumType type*/ int type, float value)
+{
+	switch(type)
+	{
+		case 0:
+			depth_target	= value;
+		break;
+		case 1:
+			rate_target		= value;
+		break;
+	};
+}
+
 void CTremolo::setDepth(float dpth)
 {
 	if (dpth >= 0)
@@ -55,8 +69,9 @@ void CTremolo::setRate(float rateInHz)
 	LFO->setFrequencyinHz(rateInHz);
 }
 
-float ** CTremolo::process(float **inputBuffer, float **outputBuffer, int numFrames)
+void CTremolo::process(float **inputBuffer, int numFrames, bool bypass)
 {
+
 	// generate the LFO:
 	LFO->generate(numFrames);
 
@@ -65,17 +80,27 @@ float ** CTremolo::process(float **inputBuffer, float **outputBuffer, int numFra
 	{
 		for (int c = 0; c < numChannels; c++)
 		{	
-			//outputBuffer[c][i] = 0.5 + 0.5*getDepth()*LFO->getLFOSampleData(i)*(inputBuffer[c][i]);
-			outputBuffer[c][i] = (1 + getDepth()*LFO->getLFOSampleData(i))*(inputBuffer[c][i]);
+			inputBuffer[c][i] = (1 + getParam(0)*LFO->getLFOSampleData(i))*(inputBuffer[c][i]);
 		};
 	};
-
-	return outputBuffer;
 }
 
 int CTremolo::getSampleRate()
 {
 	return sampleRate;
+}
+
+float CTremolo::getParam(/*hFile::enumType type*/ int type)
+{
+	switch(type)
+	{
+		case 0:
+			return depth;
+		break;
+		case 1:
+			return rate;
+		break;
+	};
 }
 
 float CTremolo::getDepth()
