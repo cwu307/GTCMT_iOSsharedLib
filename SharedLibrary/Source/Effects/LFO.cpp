@@ -7,15 +7,15 @@
 // Generate section of LFO
 //****************************************************************************************************
 
-#include "MyLFO.h"
+#include "LFO.h"
 #include "Util.h"
 #include "math.h" 
 #define M_PI 3.14159
 
-CMyLFO::CMyLFO(float fSampleRate)
+CLFO::CLFO()
 {
     
-    m_fSampleRate = fSampleRate;
+   
     CUtil::setZero(m_pfBufferData, m_kWaveTableSize);
     
     //--- Generate Wave Tables ---//
@@ -49,45 +49,45 @@ CMyLFO::CMyLFO(float fSampleRate)
     
     //--- Initialize Defaults ---//
     m_eLFOType      = kSin;
-    m_fFrequency    = m_fSampleRate / m_kWaveTableSize;
+    m_fFrequency    = 0.0;
     m_iPhase        = 0;
-    m_fIncrement    = m_kWaveTableSize * m_fFrequency / m_fSampleRate;
-    m_fFloatIndex   = 0;
-    m_fWrappedIndex = 0;
-    m_fSlope        = 0;
+    m_fIncrement    = 0.0;
+    m_fFloatIndex   = 0.0;
+    m_fWrappedIndex = 0.0;
+    m_fSlope        = 0.0;
     
 }
 
-CMyLFO::~CMyLFO()
+CLFO::~CLFO()
 {
     //This class uses only static allocated arrays
 }
 
 //--- Set, Get LFO Frequency in Hz ---//
-void CMyLFO::setFrequencyinHz(float frequency)
+void CLFO::setFrequencyinHz(float frequency)
 {
     m_fFrequency = frequency;
     m_fIncrement = m_kWaveTableSize * m_fFrequency / m_fSampleRate;
 }
 
-float CMyLFO::getFrequencyinHz()
+float CLFO::getFrequencyinHz()
 {
     return m_fFrequency;
 }
 
 //--- Set, Get LFO Wave Type in Hz ---//
-void CMyLFO::setLFOType(LFO_Type lfoType)
+void CLFO::setLFOType(LFO_Type lfoType)
 {
     m_eLFOType = lfoType;
 }
 
-CMyLFO::LFO_Type CMyLFO::getLFOType()
+CLFO::LFO_Type CLFO::getLFOType()
 {
     return m_eLFOType;
 }
 
 //--- Generate LFO ---//
-void CMyLFO::generate(int bufferLengthToFill)
+void CLFO::generate(int bufferLengthToFill)
 {
     
     for (int sample = 0; sample < bufferLengthToFill; sample++) {
@@ -129,7 +129,7 @@ void CMyLFO::generate(int bufferLengthToFill)
 }
 
 //--- Get LFO Sample at Index ---//
-float CMyLFO::getLFOSampleData(int index)
+float CLFO::getLFOSampleData(int index)
 {
 	return (m_pfBufferData[index]);
 }

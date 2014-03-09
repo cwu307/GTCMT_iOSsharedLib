@@ -1,13 +1,13 @@
-#if !defined(__CMyLFO_hdr__)
-#define __CMyLFO_hdr__
+#if !defined(__CLFO_hdr__)
+#define __CLFO_hdr__
 
-class CMyLFO
+class CLFO
 {
 public:
     
     
-    CMyLFO(float fSamplingFreq);
-    ~CMyLFO();
+    CLFO();
+    ~CLFO();
     
     
     enum LFO_Type

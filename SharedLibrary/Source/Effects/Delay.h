@@ -1,48 +1,32 @@
-#if !defined(__CDelay_hdr__)
-#define __CDelay_hdr__
+#if !defined(__Delay_hdr__)
+#define __Delay_hdr__
 
 #include "RingBuffer.h"
 
-/*	Fractional Delay
-	----------------
-	Paramaters:	
-		- Delay time
-		- Feedback
-		- Wet/Dry Mix
-*/
-
+// fractional delay line, IIR
 class CDelay
 {
 public:
-
-	CDelay();
-
-	static void create(CDelay*& pCDelay);
-	void init(float sampleRate, int numChannels, float maxDelayInS, float delayInS, float mix, float fdBack);
-	// set:
-	void setParam(/*hFile::enumType type*/ int type, float value);
-
+	// constructor
+	CDelay(float sampleRate, int numChannels, float maxDelayInS, float delay, float mix);
+	// set
 	void setSampleRate(int sampleRate);
 	void setChanNum(int numChan);
 	void setDelayFeedback(float feedback);
 	void setDelayTime(float delay);
 	void setWetDry(float mix);
 	void setMaxDelay(float delay);
-	void setFeedback(float fdBack);
-	
-	// get:
-	float CDelay::getParam(/*hFile::enumType type*/ int type);
-
+	// get
 	float getMaxDelay();
 	float getWetDry();
 	float getDelay();
-	float getFeedback();
-	int   getSampleRate();
-	// process:
-	void process(float **inputBuffer, int numFrames, bool bypass);
+	int getSampleRate();
+	//process
+	float ** process(float** inputBuffer, float **outputBuffer, int numFrames);
 
-	void reset();
 	virtual ~CDelay () {};
+
+protected:
 
 private:
 
@@ -51,14 +35,10 @@ private:
 	int sampleRate;
 	int numChannels;
 
-	float feedBack;
+	float feedback;
 	float wetDry;
 	float delayTime;
 	float maxDelayTimeInS;
-
-	float feedBack_target;
-	float wetDry_target;
-	float delayTime_target;
 };
 
 #endif
