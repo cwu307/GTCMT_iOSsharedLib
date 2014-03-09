@@ -15,8 +15,8 @@ void CDelay::init(float sampleRate, int numChannels, float maxDelayInS, float de
 	setSampleRate(sampleRate);
 	setMaxDelay(maxDelayInS);
 	setChanNum(numChannels);
-	setWetDry(mix);
-	setFeedback(fdBack);
+	setWetDry(0);
+	setFeedback(0);
 
 	ringBuffer = new CRingBuffer<float> *[numChannels];
 
@@ -27,7 +27,7 @@ void CDelay::init(float sampleRate, int numChannels, float maxDelayInS, float de
 		ringBuffer[n]->resetInstance();
 	};
 
-	setDelayTime(delayInS);
+	setDelayTime(0);
 
 	setParam(0,delayInS);			// delay
 	setParam(1,fdBack);				// feedback
@@ -83,20 +83,26 @@ void CDelay::setParam(/*hFile::enumType type*/ int type, float value)
 	switch(type)
 	{
 		case 0:
-			delayTime_target	= value;
+			// delayTime_target	= value;
+			if (value > 0)
+				maxDelayTimeInS = value;
 		break;
 		case 1:
-			feedBack_target		= value;
+			// feedBack_target		= value;
+			if (value >= 0 && value <= 1)
+				feedBack = value;
 		break;
 		case 2:
-			wetDry_target		= value;
+			// wetDry_target		= value;
+			if (abs(value) <= 1)
+				wetDry = value;
 		break;
 	};
 }
 
 void CDelay::process(float **inputBuffer, int numFrames, bool bypass)
 {
-
+	
 	// for each channel, for each sample:
 	for (int i = 0; i < numFrames; i++)
 	{
@@ -104,8 +110,8 @@ void CDelay::process(float **inputBuffer, int numFrames, bool bypass)
 		{	
 			// ugly looking equation for fractional delay:
 			inputBuffer[c][i] =	(1-getWetDry())*(inputBuffer[c][i]) 
-									+ getFeedback()*getWetDry()*((ringBuffer[c]->getPostInc())*(getDelay()*getSampleRate()-(int)(getDelay()*getSampleRate()))
-									+ (ringBuffer[c]->get())*(1-getDelay()*getSampleRate()+(int)(getDelay()*getSampleRate())));
+								+ getFeedback()*getWetDry()*((ringBuffer[c]->getPostInc())*(getDelay()*getSampleRate()-(int)(getDelay()*getSampleRate()))
+								+ (ringBuffer[c]->get())*(1-getDelay()*getSampleRate()+(int)(getDelay()*getSampleRate())));
 
 			// outputBuffer[c][i] =	(1-getWetDry())*(inputBuffer[c][i])
 			//						 + 0.5*getWetDry()*(ringBuffer[c]->getPostInc());
@@ -115,8 +121,15 @@ void CDelay::process(float **inputBuffer, int numFrames, bool bypass)
 		};
 	};
 
+	// interpolation:
+	if (abs(getParam(0)-getDelay()) > 0.05)
+		setDelayTime(getDelay()+(getParam(0)-getDelay())*0.1);
+	if (abs(getParam(1)-getFeedback()) > 0.05)
+		setFeedback(getFeedback()+(getParam(1)-getFeedback())*0.1);
+	if (abs(getParam(2)-getWetDry()) > 0.05)
+		setWetDry(getWetDry()+(getParam(2)-getWetDry())*0.1);
 }
-
+	
 float CDelay::getParam(/*hFile::enumType type*/ int type)
 {
 	switch(type)

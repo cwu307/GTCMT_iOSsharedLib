@@ -15,12 +15,12 @@ void CTremolo::init(float sampleRate, int numChannels, float depth, float rate)
 {
 	setSampleRate(sampleRate);
 	setChanNum(numChannels);
-//	setDepth(depth);
-	setParam(1,depth);
+	setDepth(depth);
+	setParam(0,depth);
 	LFO = new CMyLFO(sampleRate);
 
-	setParam(2, rate);
-//	setRate(rate);
+	setParam(1, rate);
+	setRate(rate);
 }
 
 void CTremolo::setType(CMyLFO::LFO_Type type)
@@ -45,10 +45,12 @@ void CTremolo::setParam(/*hFile::enumType type*/ int type, float value)
 	switch(type)
 	{
 		case 0:
-			depth_target	= value;
+			//depth_target	= value;
+			depth = value;
 		break;
 		case 1:
-			rate_target		= value;
+			//rate_target		= value;
+			rate = value;
 		break;
 	};
 }
@@ -83,6 +85,12 @@ void CTremolo::process(float **inputBuffer, int numFrames, bool bypass)
 			inputBuffer[c][i] = (1 + getParam(0)*LFO->getLFOSampleData(i))*(inputBuffer[c][i]);
 		};
 	};
+
+	// paramater interpolation:
+	if (abs(getParam(0)-getDepth()) > 0.05)
+		setDepth(getDepth()+(getParam(0)-getDepth())*0.1);
+	if (abs(getParam(1)-getRate()) > 0.05)
+		setRate(getRate()+(getParam(1)-getRate())*0.1);
 }
 
 int CTremolo::getSampleRate()
