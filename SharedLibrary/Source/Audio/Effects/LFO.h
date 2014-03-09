@@ -6,7 +6,7 @@ class CLFO
 public:
     
     
-    CLFO(float fSamplingFreq);
+    CLFO();
     ~CLFO();
     
     
