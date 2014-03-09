@@ -2,122 +2,56 @@
 
 CTremolo::CTremolo(int numChannels)
 {
-	setChanNum(numChannels);
-	depth = 0;
-	rate = 0;
+	m_iNumChannels = numChannels;
+	initDefaults();
 }
 
 void CTremolo::prepareToPlay(float sampleRate)
 {
-	LFO = new CLFO(sampleRate);
-	initDefaults();
+	m_fSampleRate	= sampleRate;
+	LFO = new CLFO(sampleRate);	
 }
 
 void CTremolo::initDefaults()
 {
-	setDepth(1.0);
-	setRate(3.0);
+	m_fDepth	= 1.0;
+	m_fRate		= 5.0;
 }
 
 void CTremolo::setType(CLFO::LFO_Type type)
 {
 	LFO->setLFOType(type);
 }
-
-void CTremolo::setSampleRate(int smplRate)
-{
-	if (smplRate >0)
-		sampleRate = smplRate;
-}
-
-void CTremolo::setChanNum(int numChan)
-{
-	if (numChan >= 1)
-		numChannels = numChan;
-}
-
+ 
 void CTremolo::setParam(/*hFile::enumType type*/ int type, float value)
 {
 	switch(type)
 	{
 		case 0:
-			//depth_target	= value;
-			depth = value;
+			m_fDepth = value;
 		break;
 		case 1:
-			//rate_target		= value;
-			rate = value;
+			m_fRate = value;
 		break;
 		default: 
-			// return 0;
 			break;
 	};
 }
 
-void CTremolo::setDepth(float dpth)
-{
-	if (dpth >= 0)
-	{
-		if (dpth <= 1)
-		{
-			depth = dpth;
-		};
-	};
-}
-
-void CTremolo::setRate(float rateInHz)
-{
-	LFO->setFrequencyinHz(rateInHz);
-}
-
 void CTremolo::process(float **inputBuffer, int numFrames, bool bypass)
 {
-
 	// generate the LFO:
 	LFO->generate(numFrames);
 
 	// for each channel, for each sample:
 	for (int i = 0; i < numFrames; i++)
 	{
-		for (int c = 0; c < numChannels; c++)
+		for (int c = 0; c < m_iNumChannels; c++)
 		{	
-			inputBuffer[c][i] = (1 + getDepth()*LFO->getLFOSampleData(i))*(inputBuffer[c][i]);
+			inputBuffer[c][i] = (1 + m_fDepth*LFO->getLFOSampleData(i))*(inputBuffer[c][i]);
 		};
 	};
 
-}
-
-int CTremolo::getSampleRate()
-{
-	return sampleRate;
-}
-
-float CTremolo::getParam(/*hFile::enumType type*/ int type)
-{
-	switch(type)
-	{
-		case 0:
-			return depth;
-		break;
-		case 1:
-			return rate;
-		break;
-		default: break;
-	};
-}
-
-float CTremolo::getDepth()
-{
-	return depth;
-}
-
-float CTremolo::getRate()
-{
-	return rate;
-}
-
-void CTremolo::reset()
-{
 }
 
 CTremolo::~CTremolo()

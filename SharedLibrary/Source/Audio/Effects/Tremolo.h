@@ -2,7 +2,7 @@
 #define __Tremolo_hdr__
 
 #include "LFO.h"
-#include "Math.h"
+#include <Math.h>
 
 /*	Tremolo
 	----------------
@@ -16,46 +16,30 @@ class CTremolo
 public:
 
 	CTremolo(int NumChannels);
+	~CTremolo ();
 
 	// set:
 	void setParam(/*hFile::enumType type*/ int type, float value);
+	// get:
+	float getParam(/*hFile::enumType type*/ int type);
 	void prepareToPlay(float sampleRate);
 
 	void initDefaults();
-
-	void setSampleRate(int sampleRate);
-	void setChanNum(int numChan);
-	void setType(CLFO::LFO_Type type);
-
-	void setDepth(float depth);
-	void setRate(float rate);
 	
-	// get:
-	float getParam(/*hFile::enumType type*/ int type);
-	int   getSampleRate();
-
-
-	float getDepth();
-	float getRate();
+	void setType(CLFO::LFO_Type type);
 
 	// process:
 	void process(float **inputBuffer, int numFrames, bool bypass);
-
-	void reset();
-	virtual ~CTremolo ();
 
 private:
 
 	CLFO *LFO;
 
-	float sampleRate;
-	int numChannels;
+	float m_fSampleRate;
+	int   m_iNumChannels;
 
-	float depth;
-	float rate;
-	
-	float depth_target;
-	float rate_target;
+	float m_fDepth;
+	float m_fRate;
 
 };
 
