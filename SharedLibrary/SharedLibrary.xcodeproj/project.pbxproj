@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC5C65C818CC1C5600CA9B79 /* Delay.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65B118CC1C5600CA9B79 /* Delay.mm */; };
+		FC5C65CA18CC1C5600CA9B79 /* Tremolo.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65B518CC1C5600CA9B79 /* Tremolo.mm */; };
+		FC5C65CB18CC1C5600CA9B79 /* AudioFileInput.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65B918CC1C5600CA9B79 /* AudioFileInput.mm */; };
+		FC5C65CC18CC1C5600CA9B79 /* AudioFilePlayback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65BA18CC1C5600CA9B79 /* AudioFilePlayback.cpp */; };
+		FC5C65CD18CC1C5600CA9B79 /* AudioFileRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65BC18CC1C5600CA9B79 /* AudioFileRecord.cpp */; };
+		FC5C65CE18CC1C5600CA9B79 /* AudioStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65BF18CC1C5600CA9B79 /* AudioStream.mm */; };
+		FC5C65CF18CC1C5600CA9B79 /* AudioEffectSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65C218CC1C5600CA9B79 /* AudioEffectSource.mm */; };
+		FC5C65D018CC1C5600CA9B79 /* AudioEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65C418CC1C5600CA9B79 /* AudioEngine.mm */; };
+		FC5C65D318CC1C7E00CA9B79 /* LFO.mm in Sources */ = {isa = PBXBuildFile; fileRef = FC5C65D218CC1C7E00CA9B79 /* LFO.mm */; };
 		FCE6E09518CB00EF00D6D1A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6E09418CB00EF00D6D1A3 /* Foundation.framework */; };
 		FCE6E09718CB00EF00D6D1A3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6E09618CB00EF00D6D1A3 /* CoreGraphics.framework */; };
 		FCE6E09918CB00EF00D6D1A3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6E09818CB00EF00D6D1A3 /* UIKit.framework */; };
@@ -34,14 +43,7 @@
 		FCE6E51018CB03AF00D6D1A3 /* juce_events.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E32D18CB036200D6D1A3 /* juce_events.mm */; };
 		FCE6E51118CB03AF00D6D1A3 /* juce_graphics.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E3E418CB036300D6D1A3 /* juce_graphics.mm */; };
 		FCE6E51218CB03AF00D6D1A3 /* juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E44C18CB036300D6D1A3 /* juce_gui_basics.mm */; };
-		FCE6E51618CB058300D6D1A3 /* AudioEngine.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */; };
-		FCE6E51918CB05F900D6D1A3 /* AudioStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */; };
 		FCE6E51C18CB116E00D6D1A3 /* SharedLibraryInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51A18CB116E00D6D1A3 /* SharedLibraryInterface.mm */; };
-		FCE6E51F18CB1E9100D6D1A3 /* AudioEffectSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E51D18CB1E9100D6D1A3 /* AudioEffectSource.mm */; };
-		FCE6E52218CB215F00D6D1A3 /* TestDelay.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E52018CB215F00D6D1A3 /* TestDelay.mm */; };
-		FCE6E52718CB3C5D00D6D1A3 /* AudioFileInput.mm in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E52518CB3C5D00D6D1A3 /* AudioFileInput.mm */; };
-		FCE6E52C18CBE34F00D6D1A3 /* AudioFilePlayback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E52818CBE34F00D6D1A3 /* AudioFilePlayback.cpp */; };
-		FCE6E52D18CBE34F00D6D1A3 /* AudioFileRecord.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCE6E52A18CBE34F00D6D1A3 /* AudioFileRecord.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FC5C65B118CC1C5600CA9B79 /* Delay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Delay.mm; sourceTree = "<group>"; };
+		FC5C65B218CC1C5600CA9B79 /* Delay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delay.h; sourceTree = "<group>"; };
+		FC5C65B518CC1C5600CA9B79 /* Tremolo.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Tremolo.mm; sourceTree = "<group>"; };
+		FC5C65B618CC1C5600CA9B79 /* Tremolo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tremolo.h; sourceTree = "<group>"; };
+		FC5C65B818CC1C5600CA9B79 /* AudioFileInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileInput.h; sourceTree = "<group>"; };
+		FC5C65B918CC1C5600CA9B79 /* AudioFileInput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioFileInput.mm; sourceTree = "<group>"; };
+		FC5C65BA18CC1C5600CA9B79 /* AudioFilePlayback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFilePlayback.cpp; sourceTree = "<group>"; };
+		FC5C65BB18CC1C5600CA9B79 /* AudioFilePlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayback.h; sourceTree = "<group>"; };
+		FC5C65BC18CC1C5600CA9B79 /* AudioFileRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFileRecord.cpp; sourceTree = "<group>"; };
+		FC5C65BD18CC1C5600CA9B79 /* AudioFileRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileRecord.h; sourceTree = "<group>"; };
+		FC5C65BE18CC1C5600CA9B79 /* AudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStream.h; sourceTree = "<group>"; };
+		FC5C65BF18CC1C5600CA9B79 /* AudioStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioStream.mm; sourceTree = "<group>"; };
+		FC5C65C118CC1C5600CA9B79 /* AudioEffectSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEffectSource.h; sourceTree = "<group>"; };
+		FC5C65C218CC1C5600CA9B79 /* AudioEffectSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioEffectSource.mm; sourceTree = "<group>"; };
+		FC5C65C318CC1C5600CA9B79 /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
+		FC5C65C418CC1C5600CA9B79 /* AudioEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioEngine.mm; sourceTree = "<group>"; };
+		FC5C65C618CC1C5600CA9B79 /* CUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUtil.h; sourceTree = "<group>"; };
+		FC5C65C718CC1C5600CA9B79 /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
+		FC5C65D118CC1C7E00CA9B79 /* LFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFO.h; sourceTree = "<group>"; };
+		FC5C65D218CC1C7E00CA9B79 /* LFO.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LFO.mm; sourceTree = "<group>"; };
 		FCE6E09118CB00EF00D6D1A3 /* SharedLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SharedLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE6E09418CB00EF00D6D1A3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FCE6E09618CB00EF00D6D1A3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1035,24 +1057,8 @@
 		FCE6E50818CB036400D6D1A3 /* juce_TopLevelWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = juce_TopLevelWindow.cpp; sourceTree = "<group>"; };
 		FCE6E50918CB036400D6D1A3 /* juce_TopLevelWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = juce_TopLevelWindow.h; sourceTree = "<group>"; };
 		FCE6E51318CB044C00D6D1A3 /* SharedLibraryHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedLibraryHeader.h; sourceTree = "<group>"; };
-		FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioEngine.mm; sourceTree = "<group>"; };
-		FCE6E51518CB058300D6D1A3 /* AudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEngine.h; sourceTree = "<group>"; };
-		FCE6E51718CB05F900D6D1A3 /* AudioStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStream.h; sourceTree = "<group>"; };
-		FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioStream.mm; sourceTree = "<group>"; };
 		FCE6E51A18CB116E00D6D1A3 /* SharedLibraryInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SharedLibraryInterface.mm; path = Source/Interface/SharedLibraryInterface.mm; sourceTree = SOURCE_ROOT; };
 		FCE6E51B18CB116E00D6D1A3 /* SharedLibraryInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedLibraryInterface.h; path = Source/Interface/SharedLibraryInterface.h; sourceTree = SOURCE_ROOT; };
-		FCE6E51D18CB1E9100D6D1A3 /* AudioEffectSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioEffectSource.mm; sourceTree = "<group>"; };
-		FCE6E51E18CB1E9100D6D1A3 /* AudioEffectSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEffectSource.h; sourceTree = "<group>"; };
-		FCE6E52018CB215F00D6D1A3 /* TestDelay.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestDelay.mm; sourceTree = "<group>"; };
-		FCE6E52118CB215F00D6D1A3 /* TestDelay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDelay.h; sourceTree = "<group>"; };
-		FCE6E52318CB21A600D6D1A3 /* RingBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
-		FCE6E52418CB280D00D6D1A3 /* CUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CUtil.h; sourceTree = "<group>"; };
-		FCE6E52518CB3C5D00D6D1A3 /* AudioFileInput.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioFileInput.mm; sourceTree = "<group>"; };
-		FCE6E52618CB3C5D00D6D1A3 /* AudioFileInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileInput.h; sourceTree = "<group>"; };
-		FCE6E52818CBE34F00D6D1A3 /* AudioFilePlayback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFilePlayback.cpp; sourceTree = "<group>"; };
-		FCE6E52918CBE34F00D6D1A3 /* AudioFilePlayback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFilePlayback.h; sourceTree = "<group>"; };
-		FCE6E52A18CBE34F00D6D1A3 /* AudioFileRecord.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioFileRecord.cpp; sourceTree = "<group>"; };
-		FCE6E52B18CBE34F00D6D1A3 /* AudioFileRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioFileRecord.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1085,6 +1091,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC5C65AF18CC1C5600CA9B79 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				FC5C65B018CC1C5600CA9B79 /* Effects */,
+				FC5C65B718CC1C5600CA9B79 /* FileIO */,
+				FC5C65C018CC1C5600CA9B79 /* Interface */,
+				FC5C65C518CC1C5600CA9B79 /* Utilities */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		FC5C65B018CC1C5600CA9B79 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				FC5C65D118CC1C7E00CA9B79 /* LFO.h */,
+				FC5C65D218CC1C7E00CA9B79 /* LFO.mm */,
+				FC5C65B118CC1C5600CA9B79 /* Delay.mm */,
+				FC5C65B218CC1C5600CA9B79 /* Delay.h */,
+				FC5C65B518CC1C5600CA9B79 /* Tremolo.mm */,
+				FC5C65B618CC1C5600CA9B79 /* Tremolo.h */,
+			);
+			path = Effects;
+			sourceTree = "<group>";
+		};
+		FC5C65B718CC1C5600CA9B79 /* FileIO */ = {
+			isa = PBXGroup;
+			children = (
+				FC5C65B818CC1C5600CA9B79 /* AudioFileInput.h */,
+				FC5C65B918CC1C5600CA9B79 /* AudioFileInput.mm */,
+				FC5C65BA18CC1C5600CA9B79 /* AudioFilePlayback.cpp */,
+				FC5C65BB18CC1C5600CA9B79 /* AudioFilePlayback.h */,
+				FC5C65BC18CC1C5600CA9B79 /* AudioFileRecord.cpp */,
+				FC5C65BD18CC1C5600CA9B79 /* AudioFileRecord.h */,
+				FC5C65BE18CC1C5600CA9B79 /* AudioStream.h */,
+				FC5C65BF18CC1C5600CA9B79 /* AudioStream.mm */,
+			);
+			path = FileIO;
+			sourceTree = "<group>";
+		};
+		FC5C65C018CC1C5600CA9B79 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				FC5C65C118CC1C5600CA9B79 /* AudioEffectSource.h */,
+				FC5C65C218CC1C5600CA9B79 /* AudioEffectSource.mm */,
+				FC5C65C318CC1C5600CA9B79 /* AudioEngine.h */,
+				FC5C65C418CC1C5600CA9B79 /* AudioEngine.mm */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		FC5C65C518CC1C5600CA9B79 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FC5C65C618CC1C5600CA9B79 /* CUtil.h */,
+				FC5C65C718CC1C5600CA9B79 /* RingBuffer.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		FCE6E08818CB00EF00D6D1A3 = {
 			isa = PBXGroup;
 			children = (
@@ -1125,8 +1190,8 @@
 		FCE6E0C918CB019F00D6D1A3 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FC5C65AF18CC1C5600CA9B79 /* Audio */,
 				FCE6E0CA18CB019F00D6D1A3 /* Application */,
-				FCE6E0CE18CB019F00D6D1A3 /* Audio */,
 				FCE6E0CF18CB019F00D6D1A3 /* GUI */,
 				FCE6E0D418CB019F00D6D1A3 /* Interface */,
 			);
@@ -1141,29 +1206,6 @@
 				FCE6E0CD18CB019F00D6D1A3 /* SharedLibraryAppDelegate.mm */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		FCE6E0CE18CB019F00D6D1A3 /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				FCE6E52818CBE34F00D6D1A3 /* AudioFilePlayback.cpp */,
-				FCE6E52918CBE34F00D6D1A3 /* AudioFilePlayback.h */,
-				FCE6E52A18CBE34F00D6D1A3 /* AudioFileRecord.cpp */,
-				FCE6E52B18CBE34F00D6D1A3 /* AudioFileRecord.h */,
-				FCE6E52418CB280D00D6D1A3 /* CUtil.h */,
-				FCE6E52318CB21A600D6D1A3 /* RingBuffer.h */,
-				FCE6E51818CB05F900D6D1A3 /* AudioStream.mm */,
-				FCE6E51718CB05F900D6D1A3 /* AudioStream.h */,
-				FCE6E51418CB058300D6D1A3 /* AudioEngine.mm */,
-				FCE6E51518CB058300D6D1A3 /* AudioEngine.h */,
-				FCE6E51D18CB1E9100D6D1A3 /* AudioEffectSource.mm */,
-				FCE6E51E18CB1E9100D6D1A3 /* AudioEffectSource.h */,
-				FCE6E52018CB215F00D6D1A3 /* TestDelay.mm */,
-				FCE6E52118CB215F00D6D1A3 /* TestDelay.h */,
-				FCE6E52518CB3C5D00D6D1A3 /* AudioFileInput.mm */,
-				FCE6E52618CB3C5D00D6D1A3 /* AudioFileInput.h */,
-			);
-			path = Audio;
 			sourceTree = "<group>";
 		};
 		FCE6E0CF18CB019F00D6D1A3 /* GUI */ = {
@@ -3002,26 +3044,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5C65CE18CC1C5600CA9B79 /* AudioStream.mm in Sources */,
 				FCE6E0E018CB01B200D6D1A3 /* main.m in Sources */,
+				FC5C65CB18CC1C5600CA9B79 /* AudioFileInput.mm in Sources */,
 				FCE6E0D818CB019F00D6D1A3 /* SharedLibraryViewController.mm in Sources */,
 				FCE6E0D618CB019F00D6D1A3 /* SharedLibraryAppDelegate.mm in Sources */,
 				FCE6E50A18CB03AF00D6D1A3 /* juce_audio_basics.mm in Sources */,
+				FC5C65CD18CC1C5600CA9B79 /* AudioFileRecord.cpp in Sources */,
+				FC5C65D318CC1C7E00CA9B79 /* LFO.mm in Sources */,
 				FCE6E50B18CB03AF00D6D1A3 /* juce_audio_devices.mm in Sources */,
-				FCE6E52218CB215F00D6D1A3 /* TestDelay.mm in Sources */,
 				FCE6E50C18CB03AF00D6D1A3 /* juce_audio_formats.mm in Sources */,
-				FCE6E51F18CB1E9100D6D1A3 /* AudioEffectSource.mm in Sources */,
 				FCE6E50D18CB03AF00D6D1A3 /* juce_core.mm in Sources */,
 				FCE6E50E18CB03AF00D6D1A3 /* juce_cryptography.mm in Sources */,
 				FCE6E50F18CB03AF00D6D1A3 /* juce_data_structures.mm in Sources */,
-				FCE6E52718CB3C5D00D6D1A3 /* AudioFileInput.mm in Sources */,
-				FCE6E52C18CBE34F00D6D1A3 /* AudioFilePlayback.cpp in Sources */,
-				FCE6E52D18CBE34F00D6D1A3 /* AudioFileRecord.cpp in Sources */,
-				FCE6E51618CB058300D6D1A3 /* AudioEngine.mm in Sources */,
 				FCE6E51018CB03AF00D6D1A3 /* juce_events.mm in Sources */,
 				FCE6E51118CB03AF00D6D1A3 /* juce_graphics.mm in Sources */,
-				FCE6E51918CB05F900D6D1A3 /* AudioStream.mm in Sources */,
+				FC5C65CC18CC1C5600CA9B79 /* AudioFilePlayback.cpp in Sources */,
 				FCE6E51218CB03AF00D6D1A3 /* juce_gui_basics.mm in Sources */,
 				FCE6E51C18CB116E00D6D1A3 /* SharedLibraryInterface.mm in Sources */,
+				FC5C65CF18CC1C5600CA9B79 /* AudioEffectSource.mm in Sources */,
+				FC5C65CA18CC1C5600CA9B79 /* Tremolo.mm in Sources */,
+				FC5C65D018CC1C5600CA9B79 /* AudioEngine.mm in Sources */,
+				FC5C65C818CC1C5600CA9B79 /* Delay.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
