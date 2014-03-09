@@ -22,6 +22,7 @@
     backEndInterface    =   new SharedLibraryInterface;
     m_bAudioToggleStatus = false;
     m_bTempEffectStatusToggle   =   false;
+    m_iPlayRecordStatus     =   0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,6 +61,12 @@
         backEndInterface->removeAudioEffect(0, 0);
         m_bTempEffectStatusToggle   =   false;
     }
+}
+
+- (IBAction)playRecordButtonClicked:(UIButton *)sender
+{
+    m_iPlayRecordStatus     = (m_iPlayRecordStatus + 1) % 3;
+    backEndInterface->playRecordButtonClicked(m_iPlayRecordStatus);
 }
 
 

@@ -27,6 +27,8 @@ public:
     
     void setAudioEffectBypassState(int sampleID, int effectPosition, bool bypassState);
     
+    void playRecordButtonClicked(int playRecordStatus);
+    
 private:
     
     AudioEngine*    audioEngine;
