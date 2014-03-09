@@ -8,13 +8,14 @@
 //****************************************************************************************************
 
 #include "LFO.h"
-#include <math.h> 
-#include "CUtil.h"
+#include "Util.h"
+#include "math.h" 
+#define M_PI 3.14159
 
-CLFO::CLFO(float fSampleRate)
+CLFO::CLFO()
 {
     
-    m_fSampleRate = fSampleRate;
+   
     CUtil::setZero(m_pfBufferData, m_kWaveTableSize);
     
     //--- Generate Wave Tables ---//
@@ -48,12 +49,12 @@ CLFO::CLFO(float fSampleRate)
     
     //--- Initialize Defaults ---//
     m_eLFOType      = kSin;
-    m_fFrequency    = 0;
+    m_fFrequency    = 0.0;
     m_iPhase        = 0;
-    m_fIncrement    = 0;
-    m_fFloatIndex   = 0;
-    m_fWrappedIndex = 0;
-    m_fSlope        = 0;
+    m_fIncrement    = 0.0;
+    m_fFloatIndex   = 0.0;
+    m_fWrappedIndex = 0.0;
+    m_fSlope        = 0.0;
     
 }
 

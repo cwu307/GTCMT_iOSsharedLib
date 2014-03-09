@@ -1,38 +1,21 @@
 #include "Delay.h"
 
-CDelay::CDelay()
+CDelay::CDelay(int numChannels)
 {
-	this->reset();
-};
-
-void CDelay::create(CDelay*& pCDelay)
-{
-	pCDelay = new CDelay();
-};
-
-void CDelay::init(float sampleRate, int numChannels, float maxDelayInS, float delayInS, float mix, float fdBack)
-{
-	setSampleRate(sampleRate);
-	setMaxDelay(maxDelayInS);
-	setChanNum(numChannels);
-	setWetDry(0);
-	setFeedback(0);
+	feedBack = 0;
+	wetDry = 0;
 
 	ringBuffer = new CRingBuffer<float> *[numChannels];
 
 	for (int n = 0; n < numChannels; n++)
 	{
-		ringBuffer[n]	= new CRingBuffer<float>(2*(int)(maxDelayInS*sampleRate));	
+		ringBuffer[n]	= new CRingBuffer<float>(2*(int)(MAX_DELAY));	
 		// set indices and buffer contents to zero:
 		ringBuffer[n]->resetInstance();
 	};
 
-	setDelayTime(0);
-
-	setParam(0,delayInS);			// delay
-	setParam(1,fdBack);				// feedback
-	setParam(2,mix);				// wetDry
-}
+	delayTime = 0;
+};
 
 void CDelay::setSampleRate(int smplRate)
 {
@@ -85,7 +68,7 @@ void CDelay::setParam(/*hFile::enumType type*/ int type, float value)
 		case 0:
 			// delayTime_target	= value;
 			if (value > 0)
-				maxDelayTimeInS = value;
+				delayTime = value;
 		break;
 		case 1:
 			// feedBack_target		= value;
@@ -97,6 +80,7 @@ void CDelay::setParam(/*hFile::enumType type*/ int type, float value)
 			if (abs(value) <= 1)
 				wetDry = value;
 		break;
+		default: break;
 	};
 }
 
@@ -120,14 +104,6 @@ void CDelay::process(float **inputBuffer, int numFrames, bool bypass)
 			ringBuffer[c]->putPostInc(inputBuffer[c][i]);
 		};
 	};
-
-	// interpolation:
-	if (abs(getParam(0)-getDelay()) > 0.05)
-		setDelayTime(getDelay()+(getParam(0)-getDelay())*0.1);
-	if (abs(getParam(1)-getFeedback()) > 0.05)
-		setFeedback(getFeedback()+(getParam(1)-getFeedback())*0.1);
-	if (abs(getParam(2)-getWetDry()) > 0.05)
-		setWetDry(getWetDry()+(getParam(2)-getWetDry())*0.1);
 }
 	
 float CDelay::getParam(/*hFile::enumType type*/ int type)
@@ -143,9 +119,6 @@ float CDelay::getParam(/*hFile::enumType type*/ int type)
 		case 2:
 			return wetDry_target;
 		break;
-            
-        default:
-            return 0;
 	};
 }
 

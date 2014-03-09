@@ -1,25 +1,12 @@
 #include "Tremolo.h"
 
-CTremolo::CTremolo()
+CTremolo::CTremolo(int numChannels)
 {
-	this->reset();
-}
-
-void CTremolo::create(CTremolo*& pCTremolo)
-{
-	pCTremolo = new CTremolo();
-}
-
-void CTremolo::init(float sampleRate, int numChannels, float depth, float rate)
-{
-	setSampleRate(sampleRate);
 	setChanNum(numChannels);
-	setDepth(depth);
-	setParam(0,depth);
-	LFO = new CLFO(sampleRate);
+	depth = 0;
+	LFO = new CLFO();
 
-	setParam(1, rate);
-	setRate(rate);
+	rate = 0;
 }
 
 void CTremolo::setType(CLFO::LFO_Type type)
@@ -85,11 +72,6 @@ void CTremolo::process(float **inputBuffer, int numFrames, bool bypass)
 		};
 	};
 
-	// paramater interpolation:
-	if (abs(getParam(0)-getDepth()) > 0.05)
-		setDepth(getDepth()+(getParam(0)-getDepth())*0.1);
-	if (abs(getParam(1)-getRate()) > 0.05)
-		setRate(getRate()+(getParam(1)-getRate())*0.1);
 }
 
 int CTremolo::getSampleRate()
@@ -107,9 +89,6 @@ float CTremolo::getParam(/*hFile::enumType type*/ int type)
 		case 1:
 			return rate;
 		break;
-            default:
-            return 0;
-            break;
 	};
 }
 
